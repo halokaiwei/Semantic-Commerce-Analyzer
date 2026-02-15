@@ -1,0 +1,9 @@
+carousell_img/
+mysql_data/
+venv/
+.venv/
+.git/
+__pycache__/
+*.png
+*.log
+.env
