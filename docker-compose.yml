@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db 
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: carousell
+    ports:
+      - "3306:3306"
+    networks:
+      - crawlernet
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+    ports:
+      - "8080:80"
+    networks:
+      - crawlernet
+
+  carousell-crawler:
+    build: .
+    depends_on:
+      - mysql
+    env_file:
+      - .env
+    networks:
+      - crawlernet
+    volumes:
+      - .:/app
+      - ./models:/root/.cache/torch  # 舉例：將 PyTorch 模型緩存掛載出來
+
+networks:
+  crawlernet:
+    driver: bridge

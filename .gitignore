@@ -1,0 +1,11 @@
+carousell_img/
+mysql_data/
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+.env
+*.log
+output.json

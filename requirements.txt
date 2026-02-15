@@ -1,0 +1,13 @@
+pymysql
+mysql-connector-python
+selenium
+webdriver-manager
+sentence-transformers
+scikit-learn
+numpy
+matplotlib
+pandas
+open-clip-torch
+Pillow
+requests
+cryptography
